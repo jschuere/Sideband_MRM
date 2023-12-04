@@ -26,3 +26,14 @@ plot(-4:0.05:4,stick3);set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabe
 hold off
 legend('Standard','Standard Spoiler','QuadSpoiler')
 
+%oder
+
+figure
+subplot(1,3,1)
+plot(-4:0.05:4,stick1);set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('StandadPhase')
+subplot(1,3,2)
+plot(-4:0.05:4,stick2);set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('StandardPhase_Spoiler')
+subplot(1,3,3)
+plot(-4:0.05:4,stick3);set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('QuadPhase_Spoiler')
+hold off
+legend('Standard','Standard Spoiler','QuadSpoiler')
