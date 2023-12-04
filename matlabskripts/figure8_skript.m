@@ -1,50 +1,31 @@
-%% Figure 8
-% In Vivo Measurment
 
-load('invivo_Zfiles_CSF.mat')
-%load('invivo_Zfiles_WM.mat')
-%load('invivo_Zfiles_GM.mat')
+M1 = simulate_pulseqcest('NEW_p0287.seq','CSF_20mM.yaml');   
+M2 = simulate_pulseqcest('NEW_p0574.seq','CSF_20mM.yaml');            
+M3 = simulate_pulseqcest('NEW_p086.seq','CSF_20mM.yaml');               
+M4 = simulate_pulseqcest('NEW_p1147.seq','CSF_20mM.yaml'); 
 
-offsets=-4:0.05:4;offsets2=-4:0.25:4;
-mtroffsets=0.05:0.05:4;mtroffsets2=0.5:0.25:4;
+M5 = simulate_pulseqcest('NEW_p0287.seq','CSF_20mM_dB0.yaml');   
+M6 = simulate_pulseqcest('NEW_p0574.seq','CSF_20mM_dB0.yaml');            
+M7 = simulate_pulseqcest('NEW_p086.seq','CSF_20mM_dB0.yaml');               
+M8 = simulate_pulseqcest('NEW_p1147.seq','CSF_20mM_dB0.yaml'); 
+
+M13 = simulate_pulseqcest('NEW_p0287_spoiler.seq','CSF_20mM_dB0.yaml');   
+M14 = simulate_pulseqcest('NEW_p0574_spoiler.seq','CSF_20mM_dB0.yaml');            
+M15 = simulate_pulseqcest('NEW_p086_spoiler.seq','CSF_20mM_dB0.yaml');               
+M16 = simulate_pulseqcest('NEW_p1147_spoiler.seq','CSF_20mM_dB0.yaml');   
+
 
 figure
-subplot(2,2,1)
-hold on;
-plot(offsets,Z1);  % Rohdaten
-plot(mtroffsets,MTR1);  % Rohdaten
-hold off;
-legend('Z_corrExt','MTRasym')
-xlabel('\Delta\omega [ppm]');ylabel('Z(\Delta\omega)');set(gca,'XDir','reverse');ylim([-0.1 0.6]);
-title('Without gradient spoiling - Sampling 0.05 ppm')
+subplot(3,4,1);plot(-4:0.05:4,abs(M1(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 90^{\circ}');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,2);plot(-4:0.05:4,abs(M2(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 180^{\circ}');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,3);plot(-4:0.05:4,abs(M3(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 270^{\circ}');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,4);plot(-4:0.05:4,abs(M4(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 360^{\circ}');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,5);plot(-4:0.05:4,abs(M5(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 90^{\circ} with B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,6);plot(-4:0.05:4,abs(M6(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 180^{\circ} with B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,7);plot(-4:0.05:4,abs(M7(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 270^{\circ} with B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,8);plot(-4:0.05:4,abs(M8(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 360^{\circ} with B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,9);plot(-4:0.05:4,abs(M13(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 90^{\circ} with Spoiler and B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,10);plot(-4:0.05:4,abs(M14(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 180^{\circ} with Spoiler and B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,11);plot(-4:0.05:4,abs(M15(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 270^{\circ} with Spoiler and B0 Shift');xlim([-4 4]);ylim([0 1]);
+subplot(3,4,12);plot(-4:0.05:4,abs(M16(2:end)));set(gca,'XDir','reverse');ylabel('Z(\Delta\omega)');xlabel('\Delta\omega [ppm]');title('FA = 360^{\circ} with Spoiler and B0 Shift');xlim([-4 4]);ylim([0 1]);
 
-subplot(2,2,3)
-hold on;
-plot(offsets2,Z2);  % Rohdaten
-plot(mtroffsets2,MTR2);  % Rohdaten
-hold off;
-legend('Z_corrExt','MTRasym')
-xlabel('\Delta\omega [ppm]');ylabel('Z(\Delta\omega)');set(gca,'XDir','reverse');ylim([-0.1 0.6]);
-title('Without gradient spoiling - Sampling 0.25 ppm')
-
-
-
-load('invivo_spoiler.mat')
-
-subplot(2,2,2)
-hold on;
-plot(offsets,ZS1);  % Rohdaten
-plot(mtroffsets,MTRS1);  % Rohdaten
-hold off;
-legend('Z_corrExt','MTRasym')
-xlabel('\Delta\omega [ppm]');ylabel('Z(\Delta\omega)');set(gca,'XDir','reverse');ylim([-0.1 0.6]);
-title('With gradient spoiling - Sampling 0.05 ppm')
-
-subplot(2,2,4)
-hold on;
-plot(offsets2,ZS2);  % Rohdaten
-plot(mtroffsets2,MTRS2);  % Rohdaten
-hold off;
-legend('Z_corrExt','MTRasym')
-xlabel('\Delta\omega [ppm]');ylabel('Z(\Delta\omega)');set(gca,'XDir','reverse');ylim([-0.1 0.6]);
-title('With gradient spoiling - Sampling 0.25 ppm')
