@@ -3,16 +3,16 @@
 
 % Go to the example folder
 % 1) Simulation without B0 Drift
-M_a1 = simulate_pulseqcest('Standard_0p25.seq','WM_3T_20mM_L-arginin.yaml');
-M_a2 = simulate_pulseqcest('Standard_0p1.seq','WM_3T_20mM_L-arginin.yaml');
-M_a3 = simulate_pulseqcest('Standard_0p05.seq','WM_3T_20mM_L-arginin.yaml');
-M_a4 = simulate_pulseqcest('Standard_0p01.seq','WM_3T_20mM_L-arginin.yaml');
+M_a1 = simulate_pulseqcest('S_0p25.seq','WM_3T_20mM_L-arginin.yaml');
+M_a2 = simulate_pulseqcest('S_0p1.seq','WM_3T_20mM_L-arginin.yaml');
+M_a3 = simulate_pulseqcest('S_0p05.seq','WM_3T_20mM_L-arginin.yaml');
+M_a4 = simulate_pulseqcest('S_0p01.seq','WM_3T_20mM_L-arginin.yaml');
 
 % 2) Simulation with B0 Drift of 0.07 ppm  (adjusted in the yaml file)
-M_b1 = simulate_pulseqcest('Standard_0p25.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
-M_b2 = simulate_pulseqcest('Standard_0p1.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
-M_b3 = simulate_pulseqcest('Standard_0p05.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
-M_b4 = simulate_pulseqcest('Standard_0p01.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
+M_b1 = simulate_pulseqcest('S_0p25.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
+M_b2 = simulate_pulseqcest('S_0p1.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
+M_b3 = simulate_pulseqcest('S_0p05.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
+M_b4 = simulate_pulseqcest('S_0p01.seq','WM_3T_20mM_L-arginin_B0Drift.yaml');
 
 figure;
 subplot(2,4,1)
